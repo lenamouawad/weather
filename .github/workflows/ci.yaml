@@ -6,5 +6,13 @@ jobs:
       steps:
         - name:  récupération du repository
           uses: actions/checkout@v3
-        - name: vue du contenu
-          run: ls
+        - name: installation de node
+          run: actions/setup-node@v3
+            with:
+              node-version: '16'
+        - name: installation des dépendences
+          run: npm i
+        - name:  tests unitaires
+          run: npm run test
+        - name : coverage
+          run: npm run cover
